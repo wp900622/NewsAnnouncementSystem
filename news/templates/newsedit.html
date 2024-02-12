@@ -1,0 +1,66 @@
+{% extends "baseadmin.html"%}
+{% load static%}
+{%block content%}
+<div class="container">
+    <form class="form" action="./1/" id="form1" name="form1" method="POST">
+        {%csrf_token%}
+        <table class="table" align="center">
+            <tr>
+                <th scope="col" colspan="2" align="left">編輯新聞</th>
+            </tr>
+            <tr>
+                <td scope="col" valign="baseline"><strong>分類</strong></td>
+                <td scope="col" valign="baseline">
+                    <select name="news_type">
+                        {% for category in categories%}
+                            {% if type == category %}
+                                <option value={{category}} selected="selected">{{category}}</option>
+                            {% else %}
+                                <option value={{category}}>{{category}}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td valign="baseline" scope="col"><strong>標題</strong></td>
+                <td valign="baseline">
+                    <input type="text" name="news_subject" size="45" value="{{subject}}"/>
+                </td>
+            </tr>
+            <tr>
+                <td valign="baseline" scope="col"><strong>編輯者</strong></td>
+                <td valign="baseline" scope="col">
+                    <input type="text" name="news_editor" value="{{editor}}"/>
+                </td>
+            </tr>
+            <tr>
+                <td valign="baseline"><strong>內容</strong></td>
+                <td valign="baseline" scope="col">
+                    <textarea name="news_content" cols="60" rows="15">{{message}}</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td valign="baseline"><strong>審核</strong></td>
+                <td valign="baseline">
+                    {%if ok%}
+                        <input type="radio" name="news_ok" id="news_ok2" value="yes" checked="checked"/>已通過
+                        <input type="radio" name="news_ok" id="news_ok2" value="no"/>審核中
+                    {%else%}
+                        <input type="radio" name="news_ok" id="news_ok2" value="yes" />已通過
+                        <input type="radio" name="news_ok" id="news_ok2" value="no" checked="checked"/>審核中
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <input class="btn btn-primary" type="submit" name="button" id="button" value="送出"/>
+                    <input class="btn btn-primary" type="reset" name="button2" id="button2" value="重設"/>
+                    
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+{%endblock%}

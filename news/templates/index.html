@@ -1,0 +1,40 @@
+{% extends "base.html"%}
+{%load static%}
+{%block login%}
+
+    <a class="text-center" href="/login/">管理者登入</a>
+
+{%endblock%}
+{%block content%}
+<div class="container-fluid"" style="background-color: white;">
+    <table width="100%" class="table table-hover">
+        <tr>
+            <th scope="col" align="left">分類</th>
+            <th scope="col" align="left">標題</th>
+            <th scope="col" align="left">時間</th>
+            <th scope="col" align="left">點閱</th>
+        </tr>
+        
+        {% for unit in newsunits%}
+            <tr>
+                <td>{{unit.catego}}</td>
+                <td><a href="/detail/{{unit.id}}/">{{unit.title}}</a></td>
+                <td>{{unit.pubtime}}</td>
+                <td>{{unit.press}}</td>
+            </tr>
+        {% endfor %}
+        
+    </table>
+    <div class="container-fluid text-center">
+        {% if  currentpage > 1 %}
+            
+            <a class="btn btn-primary" href="/index/1/" role="button">上一頁</a>
+        {% endif %}
+        {% if currentpage < totalpage %}
+            <a class="btn btn-primary" href="/index/2/" role="button">下一頁</a>
+        {% endif %}
+    </div>
+   
+</div>
+
+{%endblock%}

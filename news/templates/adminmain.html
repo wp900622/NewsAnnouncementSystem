@@ -1,0 +1,39 @@
+{%extends "baseadmin.html"%}
+{%load static%}
+{%block append%}
+    <a class="btn btn-primary" href="/newsadd/" role="button">新增新聞</a>
+{%endblock%}
+{%block content%}
+<div class="container-fluid"" style="background-color: white;">
+    <table width="100%" class="table table-hover">
+        <tr>
+            <th scope="col" align="left">分類</th>
+            <th scope="col" align="left">標題</th>
+            <th scope="col" align="left">時間</th>
+            <th scope="col" align="left">編輯</th>
+        </tr>
+        
+        {% for unit in newsunits%}
+            <tr>
+                <td>{{unit.catego}}</td>
+                <td><a href="/detail/{{unit.id}}/">{{unit.title}}</a></td>
+                <td>{{unit.pubtime}}</td>
+                <td>
+                    <a class="btn btn-primary" href="/newsedit/{{unit.id}}" role="button">編輯</a>
+                    <a class="btn btn-primary" href="/news/delete/{{unit.id}}" role="button">刪除</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div class="container-fluid text-center">
+        {% if  currentpage > 1 %}
+            
+            <a class="btn btn-primary" href="/adminmain/1/" role="button">上一頁</a>
+        {% endif %}
+        {% if currentpage < totalpage %}
+            <a class="btn btn-primary" href="/adminmain/2/" role="button">下一頁</a>
+        {% endif %}
+    </div>
+   
+</div> 
+{%endblock%}

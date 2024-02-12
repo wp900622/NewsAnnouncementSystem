@@ -1,0 +1,53 @@
+{% extends "baseadmin.html" %}
+{% load static%}
+{%block content%}
+<div class="container-fluid float-start float-end">
+    <form action="." id="form1" name="form1" method="POST">
+        {%csrf_token%}
+        <table class="table" width="90%" align="center">
+            <tr>
+                <th style="background-color: yellow;" colspan="2" align="left">新增新聞</th>
+            </tr>
+            <tr>
+                <td width="20%" valign="baseline"><strong>分類</strong></td>
+                <td valign="baseline">
+                    <select name="news_type" id="news_type">
+                        <option value="公告" selected="selected">公告</option>
+                        <option value="更新" selected="selected">更新</option>
+                        <option value="活動" selected="selected">活動</option>
+                        <option value="其他" selected="selected">其他</option>
+                    </select> 
+                </td>
+            </tr>
+            <tr>
+                <td valign="baseline"><strong>標題</strong></td>
+                <td valign="baseline"><input name="news_subject" type="text" id="news_subject" required/></td>
+            </tr>
+            <tr>
+                <td valign="baseline"><strong>編輯者</strong></td>
+                <td valign="baseline"><input name="news_editor" type="text"></td>
+            </tr>
+            <tr>
+                <td valign="baseline"><strong>內容</strong></td>
+                <td valign="baseline"><input type="text" id="news_content" name="news_content" required/></td>
+            </tr>
+            <tr>
+                <td valign="baseline"><strong>審核</strong></td>
+                <td valign="baseline">
+                    <input type="radio" name="news_ok" id="news_ok2" value="yes" checked="checked"/>已通過
+                    <input type="radio" name="news_ok" id="news_ok" value="no"/>審核中
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <input type="submit" name="button" id="button" value="送出"/>
+                    <input type="reset" name="button2" id="button2" value="重設"/>
+                    
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+{%endblock%}

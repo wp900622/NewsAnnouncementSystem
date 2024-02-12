@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{%load static %}
+
+{%block content%}
+<div class = "card" style="background-color: white;">
+    <div class = "card-header text-center">
+       
+          
+        {{category}}<br>
+                    {{title}}
+    </div>
+    <div class = "card-body text-center">
+       {{pubtime}}
+                    &nbsp;{{nickname}}
+         <p class="card-body text-center">&nbsp;&nbsp;{{message}}</p>
+    </div>
+    <div class="container-fluid text-center">
+        <a class="btn btn-primary" href="/index/3/" role="button">回首頁</a>
+    </div>
+</div>
+{% endblock %}

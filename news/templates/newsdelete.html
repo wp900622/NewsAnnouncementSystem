@@ -1,0 +1,33 @@
+{% extends "adminmain.html"%}
+{%load static%}
+{%block content%}
+<form name="form1" method="post" action="./1/">
+    {% csrf_token %}
+  
+   <div class="modal-header">
+      <h5 class="modal-title">刪除新聞</h5>
+      <a  class="close" data-dismiss="modal" href="/adminmain/" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </a>
+    </div>
+  
+    <div class="modal-body">
+        <div class="modal-dialog" style="height: 400px; overflow: auto;">
+            <p align="center" style="font-size: large;"><strong>分類</strong></p>
+            <p align="center">{{type}}</p>
+            <p align="center" style="font-size: large;"><strong>標題</strong></p>
+            <p align="center">{{subject}}</p>
+            <p align="center" style="font-size: large;"><strong>編輯者</strong></p>
+            <p align="center">{{editor}}</p>
+            <p align="center" style="font-size: large;"><strong>內容</strong></p>
+            <p align="center">{{content}}</p>
+        </div>
+    </div>
+  
+    <div class="modal-footer">
+      <a  class="btn btn-primary"  href='/adminmain'>Close</a>
+      <a class="btn btn-primary" href="/news/delete/{{unit.id}}/1">刪除</a>
+    </div>
+  
+  </form>
+{%endblock%}
